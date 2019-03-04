@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+clean:
+	echo "Skip clean"
+
+build:
+	$(MAKE) -j4 ARCH=arm omap2plus_defconfig
+	$(MAKE) -j4 ARCH=arm zImage modules omap4-droid4-xt894.dtb
+
+binary:
+	dh_testdir
+	dh_testroot
+	$(MAKE) ARCH=arm INSTALL_MOD_PATH=$(PWD)/debian/linux-image-droid4 modules_install
+	mkdir -p debian/linux-image-droid4/boot/boot
+	cp arch/arm/boot/zImage debian/linux-image-droid4/boot/boot/
+	cp arch/arm/boot/dts/omap4-droid4-xt894.dtb debian/linux-image-droid4/boot/boot/
+	dh_compress
+	dh_fixperms
+	dh_strip
+	dh_makeshlibs
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+build-arch: build
+binary-arch: binary

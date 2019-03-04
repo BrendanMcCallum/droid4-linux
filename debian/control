@@ -1,0 +1,12 @@
+Source: droid4-linux
+Section: droid4
+Priority: optional
+Maintainer: Ivan J. <parazyd@dyne.org>
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>=9), bc, bison, gcc-6, libssl-dev, flex, kmod
+
+Package: linux-image-droid4
+Architecture: armhf
+Section: droid4
+Depends: kmod, linux-base, ${misc:Depends}
+Description: Linux kernel package for Droid 4
