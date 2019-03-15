@@ -1,3 +1,9 @@
+droid4-linux (5.0.0-1) unstable; urgency=medium
+
+  * Switch to quilt package format
+
+ -- Ivan J. <parazyd@dyne.org>  Fri, 15 Mar 2019 14:33:40 +0100
+
 droid4-linux (5.0.0) unstable; urgency=medium
 
   * Initial packaging
